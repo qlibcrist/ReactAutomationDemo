@@ -1,25 +1,32 @@
-.App {
+#App {
   text-align: center;
   display: flex;
   align-items: center;
+  height: 100%;
+  background-color: #323232;
+  color: aliceblue;
 }
 
 #Home {
   display: flex;
   margin: 10px;
+  height: 100%;
 }
 
 #HomeContainer {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .CheckboxWrapper {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .CheckboxWrapper label {
-  margin: 1rem
+  margin: 1rem;
+  text-align: left;
 }
 
