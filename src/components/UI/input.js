@@ -10,7 +10,6 @@ export const Input = (props) => {
 
   const sendInput = () => {
     let jsonBody = JSON.stringify({name: formData})
-    console.log(jsonBody)
     fetch('/api/input', {
       method: 'POST',
       headers: {
@@ -42,7 +41,7 @@ export const Input = (props) => {
         </form>
       </div>
       <div id="CheckboxContainer">
-        <Checkboxes value={lastRequest}></Checkboxes> 
+        <Checkboxes request={lastRequest}></Checkboxes> 
       </div>  
     </div>
   )

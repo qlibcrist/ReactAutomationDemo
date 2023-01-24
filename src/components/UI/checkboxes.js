@@ -1,25 +1,21 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { v4 } from "uuid"
 
 export const Checkboxes = (props) => {
   const [data, setData] = useState([])
   const [status, setStatus] = useState('')
-
-  const value = props.values
-
-  // GET request w/ hooks; calls when component loads
-  useEffect(() => {
-    setStatus(value)
-    getCheckboxData()
-  }, [status])
-
+  const request = props.request
 
   const getCheckboxData = () => {
     fetch('/api/checkboxes')
       .then(res => res.json().then(data => {setData(data[0].data)}))
   }
 
-  getCheckboxData()
+  if (request !== status) {
+    console.log(`Value: ${request} | Status: ${status}`)
+    setStatus(request)
+    getCheckboxData()
+  }
 
   return (
     <div className="CheckboxWrapper">
