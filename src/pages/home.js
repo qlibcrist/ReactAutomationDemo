@@ -13,9 +13,6 @@ export const Home = () => {
         <hr className="DividingLine"/>
         <Input inputLabel="Enter the Name of a Fruit" buttonName="Submit"></Input>
         <hr className="DividingLine"/>
-        <div id="CheckboxContainer">
-          <Checkboxes values={["Hello", "World"]}></Checkboxes>
-        </div>
       </div>
     </main>
   )

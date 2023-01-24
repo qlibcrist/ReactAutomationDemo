@@ -1,22 +1,24 @@
 import { useState } from "react"
+import { Checkboxes } from "./checkboxes"
 
 export const Input = (props) => {
   const label = props.inputLabel
   const buttonName = props.buttonName
 
-  const [formData, setFormData] = useState({})
+  const [formData, setFormData] = useState('')
+  const [lastRequest, setLastRequest] = useState('')
 
   const sendInput = () => {
     let jsonBody = JSON.stringify({name: formData})
     console.log(jsonBody)
-    fetch('/api/fruit', {
+    fetch('/api/input', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       mode: 'cors',
       body: jsonBody
-    }).then(response => console.log(response))
+    }).then(response => setLastRequest(response))
   }
 
   const handleSubmit = (event) => {
@@ -39,6 +41,9 @@ export const Input = (props) => {
           <button type="submit">{buttonName}</button>
         </form>
       </div>
+      <div id="CheckboxContainer">
+        <Checkboxes value={lastRequest}></Checkboxes> 
+      </div>  
     </div>
   )
 }
