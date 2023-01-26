@@ -79,3 +79,8 @@
 #InputContainer button {
   height: 2rem;
 }
+
+#DeleteContainer {
+  display: flex;
+  justify-content: left;
+}

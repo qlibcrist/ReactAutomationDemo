@@ -1,25 +1,35 @@
-import { useState } from "react"
+import { Storage } from "../../localStorage/storage"
+import { useEffect, useState } from "react"
 import { v4 } from "uuid"
 
 export const Checkboxes = (props) => {
   const [data, setData] = useState([])
-  const [status, setStatus] = useState('')
-  const request = props.request
+  const [render, setRender] = useState(false)
+
+  useEffect(() => {
+    getCheckboxData()
+  }, [])
 
   const getCheckboxData = () => {
-    fetch('/api/checkboxes')
+    fetch('/api/items')
       .then(res => res.json().then(data => {setData(data[0].data)}))
   }
 
-  if (request !== status) {
-    console.log(`Value: ${request} | Status: ${status}`)
-    setStatus(request)
+  const updateStorage = (event) => {
+    let checked = event.target.checked
+    let name = event.target.name
+    if (checked && !Storage.values.includes(name))
+      Storage.values.push(name)
+  }
+
+  if (render != props.render) {
+    setRender(props.render)
     getCheckboxData()
   }
 
   return (
     <div className="CheckboxWrapper">
-     {data.map(v => <label key={v4()}><input type="checkbox" key={v4()}></input> {v} </label>)}
+     {data.map(v => <label key={v4()}><input type="checkbox" key={v4()} name={v}onChange={updateStorage}></input> {v} </label>)}
     </div>
   )
 }

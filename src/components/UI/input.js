@@ -6,23 +6,24 @@ export const Input = (props) => {
   const buttonName = props.buttonName
 
   const [formData, setFormData] = useState('')
-  const [lastRequest, setLastRequest] = useState('')
 
   const sendInput = () => {
     let jsonBody = JSON.stringify({name: formData})
-    fetch('/api/input', {
+    fetch('/api/item', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       mode: 'cors',
       body: jsonBody
-    }).then(response => setLastRequest(response))
+    }).then()
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
     sendInput()
+    setFormData('')
+    props.update()
   }
 
   const handleChange = (event) => {
@@ -39,10 +40,7 @@ export const Input = (props) => {
           <input type="text" name="name" value={formData} onChange={handleChange}></input>
           <button type="submit">{buttonName}</button>
         </form>
-      </div>
-      <div id="CheckboxContainer">
-        <Checkboxes request={lastRequest}></Checkboxes> 
-      </div>  
+      </div> 
     </div>
   )
 }
