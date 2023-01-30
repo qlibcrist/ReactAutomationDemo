@@ -23,13 +23,13 @@ export const Checkboxes = (props) => {
   }
 
   if (render != props.render) {
-    setRender(props.render)
     getCheckboxData()
+    setRender(props.render)
   }
 
   return (
     <div className="CheckboxWrapper">
-     {data.map(v => <label key={v4()}><input type="checkbox" key={v4()} name={v}onChange={updateStorage}></input> {v} </label>)}
+     {data.map(v => <label className={"Checkbox"} key={v4()}><input type="checkbox" key={v4()} name={v} onChange={updateStorage}></input> {v} </label>)}
     </div>
   )
 }

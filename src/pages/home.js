@@ -22,7 +22,7 @@ export const Home = () => {
         <hr className="DividingLine"/>
         <Input render={updated} update={update} inputLabel="Add an item to your list!" buttonName="Submit"></Input>
         <div id="CheckboxContainer">
-          <Checkboxes update={update}></Checkboxes>
+          <Checkboxes render={updated}></Checkboxes>
         </div> 
         <hr className="DividingLine"/>
       </div>
